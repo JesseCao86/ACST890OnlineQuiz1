@@ -1,0 +1,76 @@
+################################# Question 1 #############################################
+### a）
+## Directory and put the pem file in same folder
+cd ~/Desktop/Git
+## Download files
+curl https://www.staff.hs-mittweida.de/~wuenschi/data/media/compbiolbook/chapter-10-shell-programming--triplet-stop.sh
+## Save files
+curl https://www.staff.hs-mittweida.de/~wuenschi/data/media/compbiolbook/chapter-10-shell-programming--triplet-stop.sh > triplet-stop.sh
+## Put files into AWS account
+scp -i 44316429.pem triplet-stop.sh ubuntu@ec2-13-236-121-203.ap-southeast-2.compute.amazonaws.com:
+## Put files into AWS account
+scp -i 44316429.pem triplet-stop.sh ubuntu@ec2-13-236-121-203.ap-southeast-2.compute.amazonaws.com:
+
+b)
+## Log in to ubuntu account
+ssh -i 44316429.pem ubuntu@ec2-13-236-121-203.ap-southeast-2.compute.amazonaws.com
+## Modify the code
+ubuntu@ip-172-31-16-173:~$ vi triplet-stop.sh
+## Modify
+if [ ${1:$x:3} == taa ] && [ $x -ge 9 ]; then
+## Save
+:x
+## Test 1
+./triplet-stop.sh caataataaghatcataagha
+## Result 1
+caa taa taa gha tca
+
+## Test 2
+./triplet-stop.sh caataataataa
+## Result 2
+caa taa taa
+
+## Test 3
+./triplet-stop.sh caataataagha
+## Result 3
+caa taa taa gha
+
+################################# Question 2 ############################################# 
+## Directory
+cd ~/Desktop/Git
+
+## Download txt from iLearn
+
+## Put the file into AWS account
+scp -i 44316429.pem tutes.txt ubuntu@ec2-13-236-121-203.ap-southeast-2.compute.amazonaws.com:
+
+## Log in to ubuntu account.
+ssh -i 44316429.pem ubuntu@ec2-13-236-121-203.ap-southeast-2.compute.amazonaws.com
+
+## Determine the unique items
+sort tutes.txt | uniq
+
+################################# Question 3 ############################################# 
+## Directory
+cd ~/Desktop/Git
+## Put the file into AWS account
+scp -i 44316429.pem Ques3Test.txt ubuntu@ec2-13-236-121-203.ap-southeast-2.compute.amazonaws.com:
+
+11.2
+## Code 
+gawk 'NF==3' Ques3Test.txt
+
+11.3
+## Code
+egrep -e' -[0-9]+' Ques3Test.txt
+
+11.4 
+## Code
+egrep -e' -[0-9]+\.[0-9]+ | [0-9]+\.[0-9]+ ' Ques3Test.txt
+
+11.6
+## Code
+egrep ' hydrogenase' Ques3Test.txt | egrep -v 'dehydrogenase'
+
+
+
